@@ -17,7 +17,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
-
+import com.arukione.curriculum_design.mapper.ProfessionMapper;
+import com.arukione.curriculum_design.mapper.DepartmentMapper;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;

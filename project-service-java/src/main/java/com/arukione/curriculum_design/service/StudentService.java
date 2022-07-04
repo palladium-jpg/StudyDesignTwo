@@ -18,7 +18,7 @@ import com.arukione.curriculum_design.utils.Message;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.arukione.curriculum_design.model.entity.User;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

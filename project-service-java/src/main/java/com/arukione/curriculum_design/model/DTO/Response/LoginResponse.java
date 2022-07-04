@@ -2,7 +2,7 @@ package com.arukione.curriculum_design.model.DTO.Response;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
+import com.arukione.curriculum_design.model.DTO.Response.BaseInfoResponse;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class LoginResponse extends BaseInfoResponse{
