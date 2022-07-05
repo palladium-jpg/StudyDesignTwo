@@ -13,8 +13,8 @@ import lombok.EqualsAndHashCode;
 public class Admin extends User {
 
     @TableId("AdminID")
-    String adminId;
+    String adminId;//管理员id
     @TableField("Password")
-    String password;
+    String password;//管理员密码
 
 }

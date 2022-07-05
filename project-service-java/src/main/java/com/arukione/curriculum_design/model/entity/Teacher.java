@@ -15,23 +15,23 @@ import java.security.KeyException;
 @EqualsAndHashCode(callSuper = true)
 public class Teacher extends User {
     @TableId("TID")
-    String tid;
+    String tid;//教师id
     @TableField("TName")
-    String name;
+    String name;//名称
     @TableField("Position")
     String position;
     @TableField("TRank")
-    String trank;
+    String trank;//职称
     @TableField("GuideProfID")
-    String guideProfID;
+    String guideProfID;//教师专业id
     @TableField("Phone")
-    String phone;
+    String phone;//电话号码
     @TableField("Email")
-    String email;
+    String email;//邮件
     @TableField("TopicDemand")
-    String topicDemand;
+    String topicDemand;//
     @TableField("Password")
-    String password;
+    String password; //密码
 
     public void setValue(String key, String value) throws KeyException {
         switch (key) {

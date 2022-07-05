@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @Data
 public class Profession {
     @TableId("ProfID")
-    String id;
+    String id;//专业id
     @TableField("ProfName")
-    String name;
+    String name;//专业名称
     @TableField("DeptID")
-    String deptId;
+    String deptId;//学院id
     @TableField(exist = false)
     String deptName;
 }

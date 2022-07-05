@@ -17,15 +17,15 @@ import java.security.KeyException;
 @NoArgsConstructor
 public class Topic {
     @TableId(value = "TopicID")
-    String topicId;
+    String topicId;//选题的id
     @TableField("TopicName")
-    String topicName;
+    String topicName;//选题名称
     @TableField("Introduction")
-    String introduction;
+    String introduction;//选题介绍
     @TableField("TID")
-    String tid;
+    String tid;//教师id
     @TableField("TypeID")
-    String typeId;
+    String typeId;//选题类型
     @TableField("Source")
     String source;
     @TableField("SID")

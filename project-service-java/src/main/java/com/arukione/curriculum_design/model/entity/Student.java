@@ -16,17 +16,17 @@ import java.security.KeyException;
 public class Student extends User {
 
     @TableId("SID")
-    String sid;
+    String sid; //学生编号
     @TableField("SName")
-    String name;
+    String name;//学生姓名
     @TableField("Grade")
-    Integer grade;
+    Integer grade;//入学年份
     @TableField("ProfID")
-    String professionId;
+    String professionId;//专业id
     @TableField("ClassNumber")
-    Integer classNumber;
+    Integer classNumber;//班级id
     @TableField("Password")
-    String password;
+    String password;//密码
 
     public void setValue(String key, String value) throws KeyException {
         switch (key) {

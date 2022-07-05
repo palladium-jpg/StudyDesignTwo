@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Department {
     @TableId("DeptID")
-    String deptId;
+    String deptId;//学院id
     @TableField("DeptName")
-    String name;
+    String name;//学院名称
 }

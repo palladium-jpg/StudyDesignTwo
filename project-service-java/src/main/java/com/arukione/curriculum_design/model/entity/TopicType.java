@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class TopicType {
     @TableId("TypeID")
-    String typeId;
+    String typeId;//类型id
     @TableField("TypeName")
-    String typeName;
+    String typeName;//选课类型名称
 }
