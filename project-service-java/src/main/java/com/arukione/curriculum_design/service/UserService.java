@@ -29,17 +29,19 @@ public class UserService {
     final TopicInfoMapper topicInfoMapper;
     final TopicTypeMapper topicTypeMapper;
 
+    final DeanMapper deanMapper;
     @Autowired
     UserService(AdminMapper adminMapper,
             StudentMapper studentMapper, TeacherMapper teacherMapper,
             ProfessionMapper professionMapper, TopicInfoMapper topicInfoMapper,
-            TopicTypeMapper topicTypeMapper) {
+            TopicTypeMapper topicTypeMapper,DeanMapper deanMapper) {
         this.adminMapper = adminMapper;
         this.studentMapper = studentMapper;
         this.teacherMapper = teacherMapper;
         this.professionMapper = professionMapper;
         this.topicInfoMapper = topicInfoMapper;
         this.topicTypeMapper = topicTypeMapper;
+        this.deanMapper=deanMapper;
     }
 
     public LoginResponse studentLogin(String id, String password) {
@@ -54,7 +56,7 @@ public class UserService {
             return new LoginResponse(HTTPStatus.Success, accessToken, "Student", student.getName());
         }
         return new LoginResponse(HTTPStatus.Failed, null, Message.ID_OR_PASSWORD_ERROR);
-    }
+    }//学生登录
 
     public LoginResponse teacherLogin(String id, String password) {
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
@@ -68,7 +70,29 @@ public class UserService {
             return new LoginResponse(HTTPStatus.Success, accessToken, "Teacher", teacher.getName());
         }
         return new LoginResponse(HTTPStatus.Failed, null, Message.ID_OR_PASSWORD_ERROR);
+    }//老师登录
+
+
+
+    public LoginResponse DeanLogin(String id,String password){
+        QueryWrapper<TheDean> queryWrapper=new QueryWrapper<>();
+        //创建一个QueryWrapper对象，类型为TheDean，也就是需要查询的实体；
+        queryWrapper.eq("Did",id).eq("Dpassword",password);
+        //TheDean对应的数据库的表中的Did字段和Dpassword字段的值要为id和password
+        TheDean theDean=deanMapper.selectOne(queryWrapper);
+        //deanMapper中定义的查询
+        String accessToken;
+        if(theDean!=null){
+            accessToken=Generator.generateAccessToken();
+            theDean.setUserType("Dean");
+            redisTemplate.opsForValue().set(accessToken,theDean,1,TimeUnit.DAYS);
+            return new LoginResponse(HTTPStatus.Success,accessToken,"Dean",theDean.getName());
+        }
+
+        return new LoginResponse(HTTPStatus.Failed,null,Message.ID_OR_PASSWORD_ERROR);
     }
+
+
 
     public LoginResponse adminLogin(String id, String password) {
         QueryWrapper<Admin> queryWrapper = new QueryWrapper<>();
@@ -82,7 +106,7 @@ public class UserService {
             return new LoginResponse(HTTPStatus.Success, accessToken, "Admin", admin.getName());
         }
         return new LoginResponse(HTTPStatus.Failed, null, Message.ID_OR_PASSWORD_ERROR);
-    }
+    }//管理员登录
 
     public void removeAccessToken(String accessToken) {
         redisTemplate.delete(accessToken);
@@ -110,6 +134,8 @@ public class UserService {
             throw new PermissionException();
         return user;
     }
+
+    //用户登录认证
 
     public List<Student> getStudents(String professionId) {
         QueryWrapper<Student> queryWrapper = null;

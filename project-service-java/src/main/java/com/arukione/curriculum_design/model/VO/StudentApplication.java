@@ -19,3 +19,4 @@ public class StudentApplication {
     String ProfName;
     String ClassNumber;
 }
+//学生申请信息

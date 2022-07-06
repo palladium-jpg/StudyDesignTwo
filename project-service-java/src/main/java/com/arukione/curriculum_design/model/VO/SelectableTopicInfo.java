@@ -12,3 +12,4 @@ public class SelectableTopicInfo {
     String introduction;
 
 }
+//学生选择课题时所看见的视图

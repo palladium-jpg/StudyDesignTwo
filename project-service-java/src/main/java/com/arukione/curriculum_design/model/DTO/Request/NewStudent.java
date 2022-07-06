@@ -14,6 +14,8 @@ public class NewStudent {
     String accessToken;
 
     public Student convertStudent() {
+        //学生数据的插入
+
         return Student.builder()
                 .sid(sid)
                 .name(name)
@@ -24,3 +26,4 @@ public class NewStudent {
                 .build();
     }
 }
+//新用户创建递送信息

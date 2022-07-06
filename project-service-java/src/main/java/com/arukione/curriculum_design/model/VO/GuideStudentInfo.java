@@ -12,3 +12,4 @@ public class GuideStudentInfo {
     String Grade;
     String TopicName;
 }
+//教师指导学生的信息

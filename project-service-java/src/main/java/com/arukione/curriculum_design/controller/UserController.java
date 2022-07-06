@@ -22,20 +22,30 @@ public class UserController {
     @Autowired
     UserController(UserService userService) {
         this.userService = userService;
-    }
+    }//
 
-    @PostMapping("login")
+    @PostMapping("login")//映射
     public LoginResponse login(@RequestBody LoginRequest loginRequest) throws Exception {
+
         String userType = loginRequest.getUserType();
+
         String id = loginRequest.getUserId();
+
         String password = loginRequest.getPassword();
+
         switch (userType) {
             case "Student":
                 return userService.studentLogin(id, password);
+
             case "Teacher":
                 return userService.teacherLogin(id, password);
+
+            case "Dean":
+                return userService.DeanLogin(id,password);
+
             case "Admin":
                 return userService.adminLogin(id, password);
+
             default:
                 throw new Exception("SPA User Type Error: 数据异常");
         }
@@ -46,6 +56,7 @@ public class UserController {
         userService.removeAccessToken(accessToken);
         return new Response(HTTPStatus.Success);
     }
+    //登出
 
     @GetMapping("getProfessions")
     public ProfessionResponse getProfessions() {

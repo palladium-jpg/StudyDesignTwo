@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @EqualsAndHashCode(callSuper = true)
 public class GuideStudentInfoResponse extends Response{
     ArrayList<GuideStudentInfo> guideStudentInfoList;
-
+    //指导学生的信息的视图
     public GuideStudentInfoResponse(int status,ArrayList<GuideStudentInfo> guideStudentInfoList){
         super(status);
         this.guideStudentInfoList=guideStudentInfoList;

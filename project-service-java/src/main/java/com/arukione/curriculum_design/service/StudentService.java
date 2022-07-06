@@ -44,10 +44,15 @@ public class StudentService {
 
     public SelectableTopicResponse getAllTopic(String accessToken) {
         try {
+
             Student student = (Student) userService.permission(accessToken, "Student");
+
             String profId = student.getProfessionId();
             ArrayList<SelectableTopicInfo> selectableTopicInfos = topicInfoMapper.getSelectableTopicInfo(profId);
+            //数据库查询
             return new SelectableTopicResponse(HTTPStatus.OK, selectableTopicInfos);
+
+
         } catch (PermissionException permissionException) {
             return new SelectableTopicResponse(HTTPStatus.NotAllowed, Message.USER_PERMISSION_ERROR);
         } catch (NullPointerException npe) {

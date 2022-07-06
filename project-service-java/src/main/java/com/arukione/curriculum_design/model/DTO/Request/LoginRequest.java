@@ -8,3 +8,4 @@ public class LoginRequest {
     String userId;
     String password;
 }
+//登录请求时发送的信息格式

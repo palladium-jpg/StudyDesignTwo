@@ -10,3 +10,4 @@ public class HTTPStatus {
     public static int NotAllowed = 403; //没有权限
 
 }
+//http的状态码

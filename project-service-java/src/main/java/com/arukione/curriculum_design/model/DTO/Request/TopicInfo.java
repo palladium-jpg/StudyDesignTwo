@@ -8,3 +8,4 @@ public class TopicInfo {
     String typeId;
     String introduction;
 }
+//课题信息

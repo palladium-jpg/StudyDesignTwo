@@ -5,6 +5,7 @@ import com.arukione.curriculum_design.mapper.ProfessionMapper;
 import com.arukione.curriculum_design.mapper.TopicInfoMapper;
 import com.arukione.curriculum_design.model.entity.Admin;
 import com.arukione.curriculum_design.model.entity.Profession;
+import com.arukione.curriculum_design.model.entity.TheDean;
 import com.arukione.curriculum_design.service.UserService;
 import com.arukione.curriculum_design.utils.Generator;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 @SpringBootTest
 class CurriculumDesignApplicationTests {
 
-	@Autowired
+	/*@Autowired
 	AdminMapper adminMapper;
 	@Autowired
     UserService userService;
@@ -70,5 +71,10 @@ class CurriculumDesignApplicationTests {
 	@Test
 	void getTopicN() {
 		System.out.println(topicInfoMapper.getTopicN("10021"));
+	}*/
+	@Autowired
+	TheDean theDean;
+	void printmess(){
+		System.out.println(theDean.toString());
 	}
 }

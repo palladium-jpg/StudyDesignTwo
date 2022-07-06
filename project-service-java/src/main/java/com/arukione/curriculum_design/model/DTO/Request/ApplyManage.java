@@ -8,3 +8,4 @@ public class ApplyManage {
     String topicId;
     String status;
 }
+//

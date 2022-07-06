@@ -1,38 +1,44 @@
 package com.arukione.curriculum_design.model.entity;
 
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 import java.security.KeyException;
 
+@ToString
 @Data
+@Component
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @TableName("dean")
-public class theDean extends User{
+@Builder
+public class TheDean extends User{
 
     @TableId("Did")
     String Did;//系主任id
-    @TableId("Dname")
+    @TableField("Dname")
     String Dname;//系主任姓名
-    @TableId("Dpassword")
+    @TableField("Dpassword")
     String Dpassword;//密码
-    @TableId("ProfID")
+    @TableField("ProfID")
     String ProfID;//系主任专业id
-    @TableId("phone")
+    @TableField("phone")
     String phone;
-    @TableId("email")
+    @TableField("email")
     String email;
+
+
 
     public void setValue(String key, String value) throws KeyException {
         switch (key) {
             case "Did":
                 this.Did = value;
-                break;
+               break;
             case "Dname":
                 this.Dname = value;
                 break;
@@ -45,13 +51,13 @@ public class theDean extends User{
             case "email":
                 this.email =value;
                 break;
-            case "Dpassword":
+           case "Dpassword":
                 this.Dpassword = value;
-                break;
+               break;
             default:
                 throw new KeyException("找不到该键对应的字段");
-        }
-    }
+       }
+   }
 
 
 }

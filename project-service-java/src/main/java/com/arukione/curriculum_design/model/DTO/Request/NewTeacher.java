@@ -16,6 +16,7 @@ public class NewTeacher {
     String accessToken;
 
     public Teacher convertTeacher(){
+        //老师数据实例化
         position = position.equals("") ?"无":position;
         rank = rank.equals("") ?"无":rank;
         phone = phone.equals("") ?"无":phone;
@@ -32,3 +33,4 @@ public class NewTeacher {
                 .build();
     }
 }
+//新教师创建递送信息

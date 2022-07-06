@@ -171,10 +171,13 @@ public class TeacherService {
     // 获取指导学生信息
     public Response getGuideStudentInfo(String accessToken) {
         try {
+
             Teacher teacher = (Teacher) userService.permission(accessToken, "Teacher");
             String tid = teacher.getTid();
             ArrayList<GuideStudentInfo> gsInfo = studentMapper.getGuideStudentInfo(tid);
-            return new GuideStudentInfoResponse(200, gsInfo);
+            return new GuideStudentInfoResponse(200, gsInfo);//返回指导学生的数据
+            //
+
         } catch (PermissionException permissionException) {
             return new Response(HTTPStatus.NotAllowed, Message.USER_PERMISSION_ERROR);
         } catch (NullPointerException npe) {
@@ -189,6 +192,7 @@ public class TeacherService {
             String tid = teacher.getTid();
             ArrayList<ApplicationStatusInfo> asInfo = studentMapper.getApplicationStatusInfo(tid);
             return new ApplicationStatusInfoResponse(200, asInfo);
+            //教师查阅学生的申请信息
         } catch (PermissionException permissionException) {
             return new Response(HTTPStatus.NotAllowed, Message.USER_PERMISSION_ERROR);
         } catch (NullPointerException npe) {

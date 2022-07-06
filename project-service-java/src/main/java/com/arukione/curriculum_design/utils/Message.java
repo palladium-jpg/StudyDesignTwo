@@ -8,3 +8,4 @@ public class Message {
     public final static String DB_NOT_OPERATION = "数据库没有成功的操作";
     public final static String DB_NO_DATA = "数据库没有数据";
 }
+//错误信息

@@ -16,7 +16,7 @@ public class StudentController {
 
     final StudentService studentService;
 
-    @Autowired
+    @Autowired//注入定义好的bean
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }

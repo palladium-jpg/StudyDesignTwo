@@ -11,9 +11,12 @@ public class LoginResponse extends BaseInfoResponse{
         super(status,userType,name);
         this.accessToken = accessToken;
     }
+    //登陆成功
+    //返回状态码、token、用户类型、名称
 
     public LoginResponse(int status, String accessToken,String mes){
         super(status,mes);
         this.accessToken = accessToken;
     }
+    //登陆失败
 }

@@ -1,5 +1,6 @@
 package com.arukione.curriculum_design.controller;
 
+import com.arukione.curriculum_design.model.DTO.Request.NewDean;
 import com.arukione.curriculum_design.model.DTO.Request.NewStudent;
 import com.arukione.curriculum_design.model.DTO.Request.NewTeacher;
 import com.arukione.curriculum_design.model.DTO.Response.AccountResponse;
@@ -26,6 +27,11 @@ public class AdminController {
         return adminService.addTeacher(newTeacher);
     }
 
+    @PostMapping("addDean")
+    public Response addDean(@RequestBody NewDean newDean){
+        return adminService.addDean(newDean);
+    }
+
     @GetMapping("getAccount")
     public AccountResponse getAccount(@RequestParam("accessToken") String accessToken) {
         return (AccountResponse) adminService.getAccounts(accessToken);
@@ -41,6 +47,12 @@ public class AdminController {
         return adminService.deleteTeacherByID(accessToken, tid);
     }
 
+    @DeleteMapping("deleteDean")
+    public Response deleteDean(@RequestParam("accseeToken")String accseeToken,@RequestParam("Did") String Did){
+        return adminService.deleteDeanByID(accseeToken,Did);
+    }
+    //删除Dean
+
     @PostMapping("changeStudentInfo")
     public Response changeStudentInfo(@RequestParam("accessToken") String accessToken,
                                       @RequestParam("sid") String sid,
@@ -55,5 +67,17 @@ public class AdminController {
                                       @RequestParam("key") String key,
                                       @RequestParam("value") String value) {
         return adminService.changeTeacherByID(accessToken, tid, key, value);
+    }
+
+    //更改系主任
+    @PostMapping("changeDeanInfo")
+    public Response changeDeanInfo(
+            @RequestParam("accessToken") String accessToken,
+            @RequestParam("Did") String Did,
+            @RequestParam("key") String key,
+            @RequestParam("value") String value
+    )
+    {
+        return adminService.changeDeanByID(accessToken,Did,key,value);
     }
 }
