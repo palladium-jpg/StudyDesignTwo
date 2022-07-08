@@ -32,8 +32,6 @@ public class TheDean extends User{
     @TableField("email")
     String email;
 
-
-
     public void setValue(String key, String value) throws KeyException {
         switch (key) {
             case "Did":

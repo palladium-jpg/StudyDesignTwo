@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class SelectableTopicResponse extends Response {
+//可选课题Response
 
     List<SelectableTopicInfo> selectableTopicInfos = new ArrayList<>();
 

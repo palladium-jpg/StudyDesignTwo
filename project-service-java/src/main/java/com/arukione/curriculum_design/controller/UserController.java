@@ -28,21 +28,21 @@ public class UserController {
     public LoginResponse login(@RequestBody LoginRequest loginRequest) throws Exception {
 
         String userType = loginRequest.getUserType();
-
+        //获取登陆的类型
         String id = loginRequest.getUserId();
-
+        //获取登陆的ID编码
         String password = loginRequest.getPassword();
-
+        //获取登陆的账号
         switch (userType) {
             case "Student":
                 return userService.studentLogin(id, password);
-
+            //学生
             case "Teacher":
                 return userService.teacherLogin(id, password);
-
+            //老师
             case "Dean":
                 return userService.DeanLogin(id,password);
-
+            
             case "Admin":
                 return userService.adminLogin(id, password);
 

@@ -25,21 +25,25 @@ public class StudentController {
     public SelectableTopicResponse getSelectableTopic(@RequestParam("accessToken") String accessToken) {
         return studentService.getAllTopic(accessToken);
     }
+    //获取所有的可选的topic
 
     @GetMapping("/getSelectableTeacher")
     public SelectableTeacherResponse getSelectableTeacher(@RequestParam("accessToken") String accessToken) {
         return studentService.getAllTeacher(accessToken);
     }
+    //获取所有的可选老师
 
     @PostMapping("/applyTeacherTopic")
     public Response applyTeacherTopic(@RequestParam("accessToken") String accessToken, @RequestParam("topicId") String topicId) {
         return studentService.addApply(accessToken, topicId);
     }
+    //发送申请老师的论文的请求
 
     @PostMapping("applyStudentTopic")
     public Response applyStudentTopic(@RequestParam("accessToken") String accessToken, @RequestParam("tid") String tid, @RequestBody TopicInfo topicInfo) {
         return studentService.addApply(accessToken, tid, topicInfo);
     }
+    //向老师发送申请自定义topic的请求
 
     //获得我的导师信息 √
     @GetMapping("getMyTeacher")
