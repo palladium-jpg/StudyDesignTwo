@@ -46,6 +46,7 @@ public class DeanService {
             TheDean theDean =(TheDean) userService.permission(accessToken,"Dean");
             String ProfId=theDean.getProfID();
             ArrayList<StudentWithTeacher> studentWithTeacherLis=deanMapper.SelectInfoAboutView();
+
             return new SWTViewResponse(HTTPStatus.OK,studentWithTeacherLis);
 
         } catch (PermissionException e) {
