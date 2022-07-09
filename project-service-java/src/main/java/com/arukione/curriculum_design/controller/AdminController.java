@@ -48,8 +48,8 @@ public class AdminController {
     }
 
     @DeleteMapping("deleteDean")
-    public Response deleteDean(@RequestParam("accseeToken")String accseeToken,@RequestParam("Did") String Did){
-        return adminService.deleteDeanByID(accseeToken,Did);
+    public Response deleteDean(@RequestParam("accessToken")String accessToken,@RequestParam("Did") String Did){
+        return adminService.deleteDeanByID(accessToken,Did);
     }
     //删除Dean
 

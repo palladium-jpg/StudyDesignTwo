@@ -193,9 +193,9 @@ public class AdminService {
     //删除老师
 
     //删除系主任
-    public Response deleteDeanByID(String accesstoken,String DID){
+    public Response deleteDeanByID(String accessToken,String DID){
 
-            return opsResult(accesstoken,teacherMapper.deleteById(DID),"删除失败");
+            return opsResult(accessToken,deanMapper.deleteById(DID),"删除失败");
         //删除成功则返回成工
     }
 
