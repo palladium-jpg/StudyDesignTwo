@@ -28,7 +28,6 @@ public class AdminService {
     final UserService userService;
     final TopicInfoMapper topicInfoMapper;
     final ApplicationMapper applicationMapper;
-
     final DeanMapper deanMapper;
 
 
@@ -195,7 +194,7 @@ public class AdminService {
     //删除系主任
     public Response deleteDeanByID(String accessToken,String DID){
 
-            return opsResult(accessToken,deanMapper.deleteById(DID),"删除失败");
+        return opsResult(accessToken,teacherMapper.deleteById(DID),"删除失败");
         //删除成功则返回成工
     }
 
@@ -250,16 +249,16 @@ public class AdminService {
     //修改老师信息
 
     //修改Dean信息
-    public Response changeDeanByID(String accesstoken,String DID,String key,String value){
+    public Response changeDeanByID(String accessToken,String DID,String key,String value){
         try{
             TheDean theDean=new TheDean();
             if(!key.equals("Did")){
                 theDean.setValue(key,value);
                 theDean.setValue("Did",DID);
-                return opsResult(accesstoken,deanMapper.updateById(theDean),"修改失败");
+                return opsResult(accessToken,deanMapper.updateById(theDean),"修改失败");
 
             }else {
-                return opsResult(accesstoken,deanMapper.UpdateDid(value,key),"修改失败");
+                return opsResult(accessToken,deanMapper.UpdateDid(value,key),"修改失败");
             }
         } catch (KeyException e) {
             throw new RuntimeException(e);
@@ -267,4 +266,3 @@ public class AdminService {
     }
     //修改Dean信息
 }
-

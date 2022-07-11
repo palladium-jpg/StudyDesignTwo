@@ -10,6 +10,7 @@ import com.arukione.curriculum_design.model.DTO.Response.TopicTResponse;
 import com.arukione.curriculum_design.model.entity.Topic;
 import com.arukione.curriculum_design.service.DeanService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,6 +36,27 @@ public class DeanController {
     public TopicResponse GetTopicInfo(@RequestParam("accessToken") String accessToken) throws PermissionException {
         return deanService.GetTopicByProfID(accessToken);
     }
+
+    @GetMapping("/allTeacher")
+    public Response allTeacher(@RequestParam("accessToken") String accessToken) {
+        return deanService.allTeacher(accessToken);
+    }
+
+    @GetMapping( "editTopic")
+    public Response editTopic(@RequestParam("accessToken") String accessToken){
+        return deanService.editTopic(accessToken);
+    }
+
+    @GetMapping( "getTopicType")
+    public Response getTopicType(@RequestParam("accessToken") String accessToken){
+        return deanService.getTopicType(accessToken);
+    }
+
+    @GetMapping( "getStudentMessage")
+    public Response getStudentApplication(@RequestParam("accessToken") String accessToken){
+        return deanService.getStudentApplication(accessToken);
+    }
+
 
 
 }

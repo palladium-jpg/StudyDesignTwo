@@ -47,4 +47,8 @@ public interface StudentMapper extends BaseMapper<Student> {
             "and student.ProfID=profession.ProfID " +
             "and Status='0'")
     ArrayList<StudentApplication> getStudentApplication(String tid);
+
+    @Select("select student.SID,student.SName,student.ClassNumber,student.ProfID,profession.ProfName,profession.ProfID,topic_info.Source,topic_info.SID from student,profession,topic_info where student.SID =topic_info.SID and student.ProfID=profession.ProfID")
+    ArrayList<StudentApplication> getStudentMessage();
+
 }

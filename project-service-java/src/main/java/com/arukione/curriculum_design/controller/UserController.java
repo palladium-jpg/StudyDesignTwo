@@ -81,7 +81,7 @@ public class UserController {
 
     @GetMapping("getType")
     public TypeResponse getType(){
-       return userService.getTopicType();
+        return userService.getTopicType();
     }
 
     @GetMapping("/verification/code/{time}")

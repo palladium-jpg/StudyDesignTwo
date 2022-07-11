@@ -86,7 +86,7 @@ public class UserService {
             accessToken=Generator.generateAccessToken();
             theDean.setUserType("Dean");
             redisTemplate.opsForValue().set(accessToken,theDean,1,TimeUnit.DAYS);
-            return new LoginResponse(HTTPStatus.Success,accessToken,"Dean",theDean.getName());
+            return new LoginResponse(HTTPStatus.Success,accessToken,"Dean",theDean.getDname());
         }
 
         return new LoginResponse(HTTPStatus.Failed,null,Message.ID_OR_PASSWORD_ERROR);

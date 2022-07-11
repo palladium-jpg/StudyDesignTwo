@@ -14,9 +14,15 @@ import java.util.ArrayList;
 public interface TopicInfoMapper extends BaseMapper<Topic> {
 
 
+
     @Select("select * from topic_info where TopicID=#{topicId}")
     Topic getTopic(String topicId);
 
+    @Select("select TopicID,TopicName,TypeID as Type, TID as Teacher, Introduction,SID, Source from topic_info")
+    ArrayList<TopicView> getAllTopic();
+
+    @Select("select TypeID as Type,Source as Source from topic_info")
+    ArrayList<TopicView> getTopicType();
     @Select("select topic_info.TopicID,TopicName,Introduction,TypeName as Type,SID, Source " +
             "from topic_info,topic_type " +
             "where " +
