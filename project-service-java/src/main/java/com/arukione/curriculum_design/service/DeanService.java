@@ -15,6 +15,7 @@ import com.arukione.curriculum_design.model.entity.TheDean;
 import com.arukione.curriculum_design.utils.HTTPStatus;
 import com.arukione.curriculum_design.utils.Message;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.api.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,20 +56,13 @@ public class DeanService {
     }
     //查看所有的已经选择好的习题结果与相关信息
     public Response DeleteTopicByID(String accessToken,String TopicID){
-        try {
+       if(DeanPermission(accessToken) == null){
+           deanMapper.deleteById(TopicID);
+           return new Response(HTTPStatus.OK,"删除成功");
+       }else {
+           return new Response(HTTPStatus.Failed,"删除失败");
+       }
 
-            return opsResult(accessToken, studentMapper.deleteById(TopicID), "删除失败");
-
-        } catch (Exception e) {
-            if (e.getMessage().contains("foreign key")) {
-
-
-                return opsResult(accessToken, studentMapper.deleteById(TopicID), "删除失败");
-            } else {
-                e.printStackTrace();
-                return new Response(HTTPStatus.Failed, e.getMessage());
-            }
-        }
 
     }
      public TopicResponse GetTopicByProfID(String accessToken) throws PermissionException {
@@ -93,11 +87,12 @@ public class DeanService {
         else
             return new Response(HTTPStatus.Failed, message);
     }
+
     public Response DeanPermission(String accessToken) {
 
         try {
 
-            userService.permission(accessToken, "Admin");
+            userService.permission(accessToken, "Dean");
             return null;
 
         } catch (PermissionException permissionException) {
@@ -110,6 +105,7 @@ public class DeanService {
 
         }
     }
+
 
 
 }

@@ -165,6 +165,8 @@ public class UserService {
                 return new UserInfoResponse(HTTPStatus.OK, (Student) user);
             case "Teacher":
                 return new UserInfoResponse(HTTPStatus.OK, (Teacher) user);
+            case "Dean":
+                return new UserInfoResponse(HTTPStatus.OK,(TheDean) user);
             case "Admin":
                 return new UserInfoResponse(HTTPStatus.OK, (Admin) user);
             default:

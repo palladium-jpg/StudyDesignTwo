@@ -32,12 +32,7 @@ public interface DeanMapper extends BaseMapper<TheDean> {
     @Delete("delete from topic_info where TopicID=#{TopicID}")
     int DeleteTopicByTopicID(String TopicID);
     // 删除选定的论文课题
-    @Select("select TopicID,TopicName,Introduction,TypeName,student.SID,SName " +
-            "from student,teacher,topic_info,topic_type " +
-            "where topic_info.TypeID=topic_type.TypeID and " +
-            "topic_info.TID=teacher.TID  and " +
-            "student.SID=topic_info.SID and" +
-            "teacher.TID=#{ProfID};")
+    @Select(" select TopicID,TopicName,Introduction,TypeName,student.SID,SName from student,teacher,topic_info,topic_type where topic_info.TypeID=topic_type.TypeID and topic_info.TID=teacher.TID  and student.SID=topic_info.SID and teacher.GuideProfID=#{ProfId}")
     ArrayList<TopicView> SelectTopicByProfID(String ProfId);
 }
 

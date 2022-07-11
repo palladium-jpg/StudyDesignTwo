@@ -42,7 +42,7 @@ public class UserController {
             //老师
             case "Dean":
                 return userService.DeanLogin(id,password);
-            
+
             case "Admin":
                 return userService.adminLogin(id, password);
 
